@@ -1,0 +1,3 @@
+What happens when you initialize a repository? Why do you need to do it?
+
+When git init is run a new special directory is created called .git and that makes the directory a reposotory. Git will track all changes using that special directory, using metadata.
