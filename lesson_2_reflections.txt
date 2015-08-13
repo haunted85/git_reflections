@@ -7,3 +7,27 @@ When git init is run a new special directory is created called .git and that mak
 The staging area is a middle ground between the working directory and the repository. From the working directory you can pick which files to prepare for a commit before updating the repository.
 The value is given from the level of control over the updates and the changes made.
 
+* How can you use the staging area to make sure you have one commit per logical change?
+
+Stick to one logical task and then commit right away, as soon as the change has been finished.
+Also cheching for differences between the working directory and the staging area and the 
+staging area and the repository as well. (Useful commands git diff / git diff --staged respectively.)
+
+* What are some situations when branches would be helpful in keeping your history organized? How would branches help?
+
+Let's say I have a project that has reached a stable release and I want to develop a new exciting feature. I can create a branch to implement the new code without affecting the stable release.
+Then as soon as I am satisfied, I can merge the branch and move on.
+
+* How do the diagrams help you visualize the branch structure?
+
+Each commit is a node. Each node has a parent, which is the commit we start changing in order to produce the current. The diagrams are really helpful to realize the state of the project, the changes on every branch.
+
+			 o [IS NOT REACHABLE!]
+			/
+		o--o--o (exp-branch*)
+o--o--o/--o--o (master)
+
+Let's say I have two branches: master and exp-branch. While I am working on the exp-branch let's assume I find a bug and I trace it back to the commit before the current. So I try to correct it by committing the correct code from a node that is not a tip of the exp-branch. As git works as a uni-directional graph that only connects children to parents (and -- NOT -- vice-versa) the new commit won't be reachable because there is no path connecting the tip of the exp-branch to the commit and therefore it won't show up!! In order to avoid that, another branch can be created and get that checked it out:
+
+git checkout -b new_bug_free_exp-branch
+
