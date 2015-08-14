@@ -35,3 +35,9 @@ git checkout -b new_bug_free_exp-branch
 
 Merging two branches essentially means to incorporate changes of one branch into the other. Once two brances have merged, they have the same tip, the old branch label gets deleted and the result is a node with two parents, one for each branch merged.
 
+* What are the pros and cons of Git’s automatic merging vs. always doing merges manually?
+
+	[PROS]
+		+ saves up lots of time
+	[CONS]
+		- refactored functions modified in one file and not in one other will result in duplicate code
